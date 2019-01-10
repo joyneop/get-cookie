@@ -2,27 +2,52 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Get Cookie</title>
         <style>
         html, body {
+            font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang-SC', sans-serif;
             font-size: 30px;
         }
         body {
             color: #000;
-            padding: 40px;
+            padding: 50px;
+        }
+        p {
+            margin: 0 0 20px;
         }
         #Anchor {
-            color: #08C;
+            color: #06E;
         }
-        #Anchor::after {
-            content: '将本链接拖拽到浏览器书签栏/收藏夹栏';
+        [lang="en"] #Anchor::after {
+            content: 'this link';
+        }
+        [lang="zh-Hans"] #Anchor::after {
+            content: '这个链接';
         }
         #Anchor > span {
+            display: none;
+        }
+        body[lang="en"] [lang="zh-Hans"] {
+            display: none;
+        }
+        body[lang="zh-Hans"] [lang="en"] {
             display: none;
         }
         </style>
     </head>
     <body>
-        <a href="javascript:prompt('请复制以下 Cookie 文本:', document.cookie)" id="Anchor"><span>获取 Cookie</span></a>，在目标网站上点击该收藏夹项目「获取 Cookie」，即可获取该网站的 Cookie。
+        <script type="text/javascript">
+        if (navigator.language.slice(0, 2) === 'zh') {
+            document.body.setAttribute('lang', 'zh-Hans');
+        } else {
+            document.body.setAttribute('lang', 'en');
+        };
+        </script>
+        <div class="" lang="en">
+            <p>Drag <a href="javascript:prompt('Please copy Cookie:', document.cookie)" id="Anchor"><span>Get Cookie</span></a> to Bookmark Bar above.</p><p>By clicking "Get Cookie" when browsing a webpage, you will get the cookie on the website.</p>
+        </div>
+        <div class="" lang="zh-Hans">
+            <p>将<a href="javascript:prompt('请复制以下 Cookie 文本:', document.cookie)" id="Anchor"><span>获取 Cookie</span></a>拖拽到浏览器书签栏/收藏夹栏。</p><p>在目标网站上点击该收藏夹项目「获取 Cookie」，即可获取该网站的 Cookie。</p>
+        </div>
     </body>
 </html>
